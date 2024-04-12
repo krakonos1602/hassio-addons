@@ -5,7 +5,7 @@ tar -zxf v$MEALIE_VERSION.tar.gz
 
 export SUB_PATH=nginxsbpth
 
-cd /mealie-$MEALIE_VERSION/frontend && yarn install --non-interactive --frozen-lockfile && yarn generate --non-interactive
+cd /mealie-$MEALIE_VERSION/frontend && yarn install --non-interactive --frozen-lockfile && yarn generate
 
 docker login ghcr.io -u krakonos1602 --password-stdin
 
