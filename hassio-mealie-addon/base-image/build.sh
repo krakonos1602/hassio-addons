@@ -7,4 +7,6 @@ export SUB_PATH=nginxsbpth
 
 cd /mealie-$MEALIE_VERSION/frontend && yarn install && yarn generate
 
-docker buildx build --platform linux/aarch64 --tag ghcr.io/krakonos1602/aarch64-hassio-mealie-addon:$MEALIE_VERSION --build-arg MEALIE_VERSION=$MEALIE_VERSION .
+docker login ghcr.io -u krakonos1602 --password-stdin
+
+docker buildx build --platform linux/aarch64 --push --tag ghcr.io/krakonos1602/aarch64-hassio-mealie-addon:$MEALIE_VERSION --build-arg MEALIE_VERSION=$MEALIE_VERSION .
