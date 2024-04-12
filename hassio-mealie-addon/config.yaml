@@ -1,0 +1,37 @@
+name: "Mealie"
+description: "Mealie v 1.4.0 | An unofficial add-on for a self-hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family."
+url: https://docs.mealie.io/
+version: "0.0.1"
+slug: "mealie"
+arch: [aarch64]
+init: false
+ingress: true
+panel_icon: mdi:silverware-variant
+panel_title: Mealie
+panel_admin: false
+ports:
+  9001/tcp: 9091
+map:
+  - config:rw
+environment:
+  DB_ENGINE: sqlite
+options:
+  ALLOW_SIGNUP: false
+  BASE_URL: null
+  BASE_SUBPATH: ""
+  SMTP_HOST: ""
+  SMTP_PORT: 465
+  SMTP_AUTH_STRATEGY: "SSL"
+  SMTP_FROM_EMAIL: ""
+  SMTP_USER: ""
+  SMTP_PASSWORD: ""
+schema:
+  ALLOW_SIGNUP: bool
+  BASE_URL: str
+  BASE_SUBPATH: str
+  SMTP_HOST: str
+  SMTP_PORT: port
+  SMTP_AUTH_STRATEGY: list(SSL|TLS|NONE)
+  SMTP_FROM_EMAIL: str
+  SMTP_USER: str
+  SMTP_PASSWORD: password

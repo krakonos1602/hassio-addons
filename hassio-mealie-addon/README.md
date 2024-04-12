@@ -1,5 +1,7 @@
 # Home Assistant Add-on: Mealie
 
+Add-on is still under development!
+
 Uses custom built docker image. Supports Home Assistant Ingress.
 
 Config options:
