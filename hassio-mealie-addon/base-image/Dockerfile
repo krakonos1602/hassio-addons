@@ -1,21 +1,3 @@
-FROM node:18 as source
-ARG MEALIE_VERSION
-
-ADD https://github.com/mealie-recipes/mealie/archive/refs/tags/v$MEALIE_VERSION.tar.gz /
-
-RUN tar -zxf v$MEALIE_VERSION.tar.gz
-
-WORKDIR /mealie-$MEALIE_VERSION/frontend
-
-RUN yarn install \
-    --prefer-offline \
-    --frozen-lockfile \
-    --non-interactive \
-    --production=false \
-    --network-timeout 1000000
-
-RUN SUB_PATH=nginxsbpth yarn generate
-
 ###############################################
 # Base Image - Python
 ###############################################
@@ -74,8 +56,8 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR $PYSETUP_PATH
-COPY --from=source /mealie-$MEALIE_VERSION/poetry.lock $PYSETUP_PATH/
-COPY --from=source /mealie-$MEALIE_VERSION/pyproject.toml $PYSETUP_PATH/
+COPY mealie-$MEALIE_VERSION/poetry.lock $PYSETUP_PATH/
+COPY mealie-$MEALIE_VERSION/pyproject.toml $PYSETUP_PATH/
 
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 RUN poetry install -E pgsql --only main
@@ -83,24 +65,7 @@ RUN poetry install -E pgsql --only main
 ###############################################
 # CRFPP Image
 ###############################################
-FROM builder-base as crfpp
-
-RUN apt update --yes && \
-    apt upgrade --yes && \
-    apt install --yes \
-    build-essential && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -Rf /usr/share/doc && \
-    rm -Rf /usr/share/man && \
-    apt-get autoremove -y
-
-ADD https://github.com/mealie-recipes/crfpp.git /crfpp
-WORKDIR /crfpp
-
-#ENV DISTRIB_ID=Ubuntu
-#ENV DISTRIB_RELEASE=20.04
-
-RUN chmod +x ./docker-build.sh && ./docker-build.sh
+FROM hkotel/crfpp as crfpp
 
 ###############################################
 # Production Image
@@ -132,14 +97,14 @@ COPY --from=crfpp /usr/local/bin/crf_learn /usr/local/bin/crf_learn
 COPY --from=crfpp /usr/local/bin/crf_test /usr/local/bin/crf_test
 
 # copy backend
-COPY --from=source /mealie-$MEALIE_VERSION/mealie $MEALIE_HOME/mealie
-COPY --from=source /mealie-$MEALIE_VERSION/poetry.lock $MEALIE_HOME/
-COPY --from=source /mealie-$MEALIE_VERSION/pyproject.toml $MEALIE_HOME/
-COPY --from=source /mealie-$MEALIE_VERSION/gunicorn_conf.py $MEALIE_HOME/
+COPY mealie-$MEALIE_VERSION/mealie $MEALIE_HOME/mealie
+COPY mealie-$MEALIE_VERSION/poetry.lock $MEALIE_HOME/
+COPY mealie-$MEALIE_VERSION/pyproject.toml $MEALIE_HOME/
+COPY mealie-$MEALIE_VERSION/gunicorn_conf.py $MEALIE_HOME/
 
 # Alembic
-COPY --from=source /mealie-$MEALIE_VERSION/alembic $MEALIE_HOME/alembic
-COPY --from=source /mealie-$MEALIE_VERSION/alembic.ini $MEALIE_HOME/
+COPY mealie-$MEALIE_VERSION/alembic $MEALIE_HOME/alembic
+COPY mealie-$MEALIE_VERSION/alembic.ini $MEALIE_HOME/
 
 # venv already has runtime deps installed we get a quicker install
 WORKDIR $MEALIE_HOME
@@ -161,11 +126,11 @@ HEALTHCHECK CMD python $MEALIE_HOME/mealie/scripts/healthcheck.py || exit 1
 
 # copying caddy into image
 ENV STATIC_FILES=/spa/static
-COPY --from=source /mealie-$MEALIE_VERSION/frontend/dist $STATIC_FILES
+COPY mealie-$MEALIE_VERSION/frontend/dist $STATIC_FILES
 
 ENV HOST 0.0.0.0
 
 EXPOSE ${APP_PORT}
 
-COPY --from=source /mealie-$MEALIE_VERSION/docker/entry.sh $MEALIE_HOME/run.sh
+COPY mealie-$MEALIE_VERSION/docker/entry.sh $MEALIE_HOME/run.sh
 RUN chmod +x $MEALIE_HOME/run.sh
