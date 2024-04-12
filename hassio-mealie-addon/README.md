@@ -21,3 +21,5 @@ The base docker image is derived from the official @mealie-recipes/mealie Docker
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg-->
+
+Further system architectures are to be added.
