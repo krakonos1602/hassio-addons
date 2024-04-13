@@ -1,4 +1,4 @@
-FROM lukascerveny/testing:aarch64-hassio-mealie
+FROM ghcr.io/krakonos1602/aarch64-hassio-mealie-addon:1.4.0
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
