@@ -7,8 +7,4 @@ export SUB_PATH=nginxsbpth
 
 cd mealie-$MEALIE_VERSION/frontend && yarn install --non-interactive --frozen-lockfile && yarn generate && cd ../..
 
-echo "Type in GitHub token:"
-
-docker login ghcr.io -u krakonos1602 --password-stdin
-
 docker buildx build --platform linux/aarch64 --push --tag ghcr.io/krakonos1602/aarch64-hassio-mealie-addon:$MEALIE_VERSION --build-arg MEALIE_VERSION=$MEALIE_VERSION .
