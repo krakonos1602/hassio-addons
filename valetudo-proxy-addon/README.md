@@ -1,6 +1,6 @@
 # Home Assistant Add-on: Valetudo Proxy
 
-Displays your Valetudo enabled vacuum web interface in Home Assistant's ingress panel. For more information about Valetudo, please refer to @Hypfer/Valetudo.
+Displays your Valetudo enabled vacuum web interface in Home Assistant's ingress panel. For more information about Valetudo, please refer to [@Hypfer/Valetudo](https://github.com/Hypfer/Valetudo).
 
 Config options:
 - LOCAL_URL (required) - The url (or ip address) of your Valetudo vacuum in your local network - e.g. "http://192.168.0.50".
