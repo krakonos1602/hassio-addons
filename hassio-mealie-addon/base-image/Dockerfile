@@ -72,6 +72,7 @@ FROM hkotel/crfpp as crfpp
 # Production Image
 ###############################################
 FROM python-base as production
+LABEL org.opencontainers.image.source="https://github.com/krakonos1602/hassio-addons"
 ARG MEALIE_VERSION
 
 ENV PRODUCTION=true
