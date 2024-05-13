@@ -1,0 +1,15 @@
+name: "Valetudo Proxy"
+description: "Displays Valetudo's web interface in Home Assitant's ingress panel."
+version: "1.0.0"
+slug: "valetudoproxy"
+arch: [aarch64, amd64, armhf, armv7, i386]
+host_network: true
+init: false
+ingress: true
+panel_icon: mdi:robot-vacuum
+panel_title: Valetudo
+panel_admin: false
+options:
+  LOCAL_URL: null
+schema:
+  LOCAL_URL: str

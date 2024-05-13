@@ -9,4 +9,4 @@ sed -i "s/%%port%%/${ingress_port}/g" /etc/nginx/servers/ingress.conf
 sed -i "s/%%interface%%/${ingress_interface}/g" /etc/nginx/servers/ingress.conf
 
 base_subpath=$(bashio::config 'BASE_SUBPATH')
-sed -i "s/%%subpath%%/${base_subpath}/g" /etc/nginx/servers/default.conf
+sed -i "s|%%subpath%%|${base_subpath}|g" /etc/nginx/servers/default.conf

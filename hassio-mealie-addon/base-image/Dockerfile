@@ -1,7 +1,8 @@
 ###############################################
 # Base Image - Python
 ###############################################
-FROM ghcr.io/home-assistant/aarch64-base-debian:bookworm as python-base
+ARG BUILD_ARCH
+FROM ghcr.io/home-assistant/${BUILD_ARCH}-base-debian:bookworm as python-base
 ARG MEALIE_VERSION
 
 ENV MEALIE_HOME="/app"
