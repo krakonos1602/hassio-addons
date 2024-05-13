@@ -2,7 +2,7 @@
 
 Add-on is still under development!
 
-Uses custom built docker image. Supports Home Assistant's ingress feature.
+Uses custom built docker image. Supports Home Assistant's ingress feature. Does not support LDAP and OIDC. Settings may be added if requested.
 
 Config options:
 - BASE_URL (required) - Base url for remote access, e.g. "https://www.mydomain.com/mealie". See Mealie documentation for further information. Nothing bad happens if you put some placeholder there when you only use Home Assistant's Ingress access.
