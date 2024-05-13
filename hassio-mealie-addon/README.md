@@ -11,7 +11,7 @@ Config options:
 - SMTP_* - E-mail sending options. See the Mealie docs. Please note, that my Home Assistant setup ends up crashing, when I try to send a testing e-mail. This is a subject of some further debugging.
 - Port Forwarding - Expose Mealie on a specific port of the Home Assistant host. Defaults to 9091.
 
-The base docker image is derived from the official [@mealie-recipes/mealie](https://github.com/mealie-recipes/mealie) Dockerfile. The add-on saves data into /homeassistant/addons_config/mealie_data. This is inspired by [@alexbelgium/hassio-addons](https://github.com/alexbelgium/hassio-addons). Ingress is enabled in a similar way as [@tux2000/home-assistant-addons/ingress-proxy](https://github.com/tux2000/home-assistant-addons/ingress-proxy) has done.
+The base docker image is derived from the official [@mealie-recipes/mealie](https://github.com/mealie-recipes/mealie) Dockerfile. The add-on saves data into /homeassistant/addons_config/mealie_data. This is inspired by [@alexbelgium/hassio-addons](https://github.com/alexbelgium/hassio-addons). Ingress is enabled in a similar way as [@tux2000/home-assistant-addons](https://github.com/tux2000/home-assistant-addons) has done.
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
