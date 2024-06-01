@@ -6,7 +6,7 @@ slug: "fireflyiii"
 arch: [aarch64, amd64]
 init: false
 ingress: true
-panel_icon: mdi:silverware-variant
+panel_icon: mdi:account-cash-outline
 panel_title: Firefly III
 panel_admin: true
 ports:
