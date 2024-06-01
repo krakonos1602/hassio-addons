@@ -1,7 +1,7 @@
 name: "Mealie"
 description: "An unofficial add-on for a self-hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family."
 url: https://docs.mealie.io/
-version: "1.7.0"
+version: "1.7.0-2"
 slug: "mealie"
 arch: [aarch64, amd64]
 init: false
@@ -25,6 +25,11 @@ options:
   SMTP_FROM_EMAIL: ""
   SMTP_USER: ""
   SMTP_PASSWORD: ""
+  OPENAI_BASE_URL: ""
+  OPENAI_API_KEY: ""
+  OPENAI_MODEL: gpt-4o
+  OPENAI_WORKERS: 2
+  OPENAI_SEND_DATABASE_DATA: true
 schema:
   ALLOW_SIGNUP: bool
   BASE_URL: str
@@ -35,3 +40,8 @@ schema:
   SMTP_FROM_EMAIL: str
   SMTP_USER: str
   SMTP_PASSWORD: password
+  OPENAI_BASE_URL: str
+  OPENAI_API_KEY: str
+  OPENAI_MODEL: str
+  OPENAI_WORKERS: int(1,10)
+  OPENAI_SEND_DATABASE_DATA: bool
