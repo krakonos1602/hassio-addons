@@ -6,8 +6,9 @@ Uses custom built docker image. Supports Home Assistant's ingress feature. Uses 
 
 Config options:
 - APP_KEY (required) - Database encryption key
+- SITE_OWNER - Administrator e-mail (only used when displaying some front-end error alerts).
 
-The add-on saves data into /homeassistant/addons_config/fireflyiii. This is inspired by [@alexbelgium/hassio-addons](https://github.com/alexbelgium/hassio-addons). Ingress is enabled in a similar way as [@tux2000/home-assistant-addons](https://github.com/tux2000/home-assistant-addons) has done.
+The add-on saves data into /homeassistant/addons_config/fireflyiii. This is inspired by [@alexbelgium/hassio-addons](https://github.com/alexbelgium/hassio-addons).
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
