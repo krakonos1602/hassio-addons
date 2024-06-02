@@ -3,7 +3,7 @@ FROM $BUILD_FROM
 ARG FIREFLY_VERSION
 
 RUN apt update \
-    && apt install --no-install-recommends -y wget curl apt-transport-https \
+    && apt install --no-install-recommends -y wget curl lsb-release apt-transport-https \
     && curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg \
     && sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 
