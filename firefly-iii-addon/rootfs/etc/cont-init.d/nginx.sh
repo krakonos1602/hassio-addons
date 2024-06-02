@@ -45,13 +45,13 @@ chown -R www-data:www-data /config/addons_config/fireflyiii/database
 
 touch /config/addons_config/fireflyiii/database/database.sqlite
 
-rm -r /var/www/html/storage/database
+rm -rf /var/www/html/storage/database
 ln -s /config/addons_config/fireflyiii/database /var/www/html/storage
 
 mkdir -p /config/addons_config/fireflyiii/upload
 chown -R www-data:www-data /config/addons_config/fireflyiii/upload
 
-rm -r /var/www/html/storage/upload
+rm -rf /var/www/html/storage/upload
 ln -s /config/addons_config/fireflyiii/upload /var/www/html/storage
 
 # Updating permissions
