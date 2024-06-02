@@ -19,6 +19,10 @@ RUN rm -rf /etc/apache2/sites*
 COPY nginx /etc/nginx
 COPY sites-enabled /etc/apache2/sites-enabled
 
+RUN sed -i -r 's@Errorlog .*@Errorlog /dev/stderr@i' /etc/apache2/apache2.conf
+RUN echo "Transferlog /dev/stdout" >> /etc/apache2/apache2.conf
+RUN echo "LoadModule rewrite_module /usr/lib/apache2/modules/mod_rewrite.so" >> /etc/apache2/apache2.conf
+
 COPY entrypoint.sh /
 RUN chmod a+x /entrypoint.sh
 
