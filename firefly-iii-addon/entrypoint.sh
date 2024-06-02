@@ -50,11 +50,9 @@ ln -s /config/addons_config/fireflyiii/upload /var/www/html/storage
 # Updating permissions
 chown -R www-data:www-data /config/addons_config/fireflyiii
 find /config/addons_config/fireflyiii -type f -exec chmod 644 {} \;
-find /config/addons_config/fireflyiii -type d -exec chmod 755 {} \;
+find /config/addons_config/fireflyiii -type d -exec chmod 775 {} \;
 
 cd /var/www/html
-
-ls /var/www/html/storage
 
 chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache

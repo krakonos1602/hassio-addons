@@ -18,7 +18,7 @@ RUN sed -i -r 's@Errorlog .*@Errorlog /dev/stderr@i' /etc/apache2/apache2.conf
 RUN echo "Transferlog /dev/stdout" >> /etc/apache2/apache2.conf
 RUN echo "LoadModule rewrite_module /usr/lib/apache2/modules/mod_rewrite.so" >> /etc/apache2/apache2.conf
 
-RUN chown -R www-data:www-data /var/www/html && find /var/www/html -type f -exec chmod 644 {} \; && find /var/www/html -type d -exec chmod 755 {} \;
+RUN chown -R www-data:www-data /var/www/html && find /var/www/html -type f -exec chmod 644 {} \; && find /var/www/html -type d -exec chmod 775 {} \;
 
 WORKDIR /var/www/html
 RUN wget -q -O composer-setup.php https://getcomposer.org/installer && php composer-setup.php && rm composer-setup.php && mv composer.phar /usr/local/bin/composer
