@@ -76,4 +76,4 @@ rm -rf storage/framework/views/*
 
 composer dump-autoload -o
 
-apachectl -D FOREGROUND
+apachectl -D FOREGROUND & nginx
