@@ -9,6 +9,8 @@ ingress_interface=$(bashio::addon.ip_address)
 sed -i "s/%%port%%/${ingress_port}/g" /etc/nginx/servers/ingress.conf
 sed -i "s/%%interface%%/${ingress_interface}/g" /etc/nginx/servers/ingress.conf
 
+export SITE_OWNER="$(bashio::config 'SITE_OWNER')"
+
 # APP_KEY
 export APP_KEY="$(bashio::config 'APP_KEY')"
 
@@ -32,14 +34,8 @@ if [ "$CURRENT" != "$APP_KEY" ]; then
     echo "$APP_KEY" >>/config/addons_config/fireflyiii/APP_KEY_BACKUP.txt
 fi
 
-# Update permissions
 mkdir -p /config/addons_config/fireflyiii
-chown -R www-data:www-data /config/addons_config/fireflyiii
-chown -R www-data:www-data /var/www/html/storage
-chmod -R 775 /config/addons_config/fireflyiii
-
 mkdir -p /config/addons_config/fireflyiii/database
-chown -R www-data:www-data /config/addons_config/fireflyiii/database
 
 touch /config/addons_config/fireflyiii/database/database.sqlite
 
@@ -47,19 +43,24 @@ rm -rf /var/www/html/storage/database
 ln -s /config/addons_config/fireflyiii/database /var/www/html/storage
 
 mkdir -p /config/addons_config/fireflyiii/upload
-chown -R www-data:www-data /config/addons_config/fireflyiii/upload
 
 rm -rf /var/www/html/storage/upload
 ln -s /config/addons_config/fireflyiii/upload /var/www/html/storage
 
 # Updating permissions
-chmod 775 /config/addons_config/fireflyiii/database/database.sqlite
 chown -R www-data:www-data /config/addons_config/fireflyiii
-chown -R www-data:www-data /var/www/html/storage
+chown -R www-data:www-data /var/www/html
 
-chown -R www-data:www-data /var/www/html/public
+find /var/www/html -type f -exec chmod 644 {} \;
+find /config/addons_config/fireflyiii -type f -exec chmod 644 {} \;
+
+find /var/www/html -type d -exec chmod 755 {} \;
+find /config/addons_config/fireflyiii -type d -exec chmod 755 {} \;
 
 cd /var/www/html
+
+chgrp -R www-data storage bootstrap/cache
+chmod -R ug+rwx storage bootstrap/cache
 
 php artisan migrate --seed
 
