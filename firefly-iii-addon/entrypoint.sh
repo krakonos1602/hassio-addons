@@ -67,6 +67,9 @@ chown -R www-data:www-data /var/www/html/public
 echo "updating database"
 cd /var/www/html
 
+composer update
+composer dump-autoload -o
+
 #php artisan migrate --seed
 #php artisan firefly-iii:decrypt-all
 #php artisan cache:clear
