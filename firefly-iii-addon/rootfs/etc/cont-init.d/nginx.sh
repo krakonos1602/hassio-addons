@@ -62,6 +62,8 @@ chown -R www-data:www-data /var/www/html/storage
 echo "updating database"
 cd /var/www/html
 
+ls
+
 php artisan firefly-iii:upgrade-database
 php artisan firefly-iii:correct-database
 php artisan firefly-iii:report-integrity
