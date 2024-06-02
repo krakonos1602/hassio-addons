@@ -20,6 +20,7 @@ RUN echo "LoadModule rewrite_module /usr/lib/apache2/modules/mod_rewrite.so" >> 
 RUN echo "LoadModule proxy_module /usr/lib/apache2/modules/mod_proxy.so" >> /etc/apache2/apache2.conf
 RUN echo "LoadModule proxy_http_module /usr/lib/apache2/modules/mod_proxy_http.so" >> /etc/apache2/apache2.conf
 RUN echo "LoadModule headers_module /usr/lib/apache2/modules/mod_headers.so" >> /etc/apache2/apache2.conf
+RUN echo "LoadModule remoteip_module /usr/lib/apache2/modules/mod_remoteip.so" >> /etc/apache2/apache2.conf
 
 RUN chown -R www-data:www-data /var/www/html && find /var/www/html -type f -exec chmod 644 {} \; && find /var/www/html -type d -exec chmod 775 {} \;
 
