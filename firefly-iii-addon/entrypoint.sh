@@ -60,7 +60,7 @@ ln -s /config/addons_config/fireflyiii/upload /var/www/html/storage
 # Updating permissions
 chmod 775 /config/addons_config/fireflyiii/database/database.sqlite
 chown -R www-data:www-data /config/addons_config/fireflyiii
-chown -R www-data:www-data /var/www/html/storage
+chown -R www-data:www-data /var/www/html
 
 echo "updating database"
 cd /var/www/html
