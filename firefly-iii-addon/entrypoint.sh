@@ -58,16 +58,7 @@ chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
 
 php artisan migrate --seed
-php artisan firefly-iii:decrypt-all
-php artisan route:clear
-php artisan twig:clean
-php artisan view:clear
-php artisan clear-compiled
-php artisan cache:clear
-php artisan firefly-iii:upgrade-database
-php artisan firefly-iii:correct-database
-php artisan firefly-iii:report-integrity
-php artisan firefly-iii:laravel-passport-keys
-php artisan firefly:instructions update
+
+composer update
 
 apachectl -D FOREGROUND
