@@ -54,6 +54,8 @@ find /config/addons_config/fireflyiii -type d -exec chmod 755 {} \;
 
 cd /var/www/html
 
+ls /var/www/html/storage
+
 chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
 
