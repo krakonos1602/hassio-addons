@@ -70,4 +70,10 @@ php artisan firefly-iii:report-integrity
 php artisan firefly-iii:laravel-passport-keys
 php artisan firefly:instructions update
 
+rm -rf bootstrap/cache/*
+rm -rf storage/framework/cache/*
+rm -rf storage/framework/views/*
+
+composer dump-autoload -o
+
 apachectl -D FOREGROUND
