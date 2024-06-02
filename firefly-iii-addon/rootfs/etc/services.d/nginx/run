@@ -4,6 +4,9 @@ bashio::log.info "Starting NGinx..."
 # APP_KEY
 APP_KEY="$(bashio::config 'APP_KEY')"
 
+
+bashio::log.info "Loaded APP_KEY"
+
 # If not base64
 if [[ ! "$APP_KEY" == *"base64"* ]]; then
     # Check APP_KEY format
