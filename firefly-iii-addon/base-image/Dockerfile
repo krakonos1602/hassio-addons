@@ -27,4 +27,9 @@ ENV APP_KEY TestTestTestTestTestTestTestTest
 
 RUN composer install
 
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y \
+    locales-all \
+    && rm -rf /var/lib/apt/lists/*
+
 LABEL org.opencontainers.image.source="https://github.com/krakonos1602/hassio-addons"
