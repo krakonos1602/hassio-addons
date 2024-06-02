@@ -1,7 +1,7 @@
 name: "Firefly III"
 description: "An unofficial add-on for a self-hosted manager for your personal finances."
 url: https://docs.firefly-iii.org
-version: "6.1.15-27"
+version: "6.1.15-28"
 slug: "fireflyiii"
 arch: [aarch64, amd64]
 init: false
@@ -16,6 +16,8 @@ map:
 environment:
   DB_CONNECTION: sqlite
   DB_DATABASE: /config/addons_config/fireflyiii/database/database.sqlite
+  APP_ENV: local
+  TRUSTED_PROXIES: "**"
 options:
   APP_KEY: null
   SITE_OWNER: mail@example.com
