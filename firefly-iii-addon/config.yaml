@@ -1,7 +1,7 @@
 name: "Firefly III"
 description: "An unofficial add-on for a self-hosted manager for your personal finances."
 url: https://docs.firefly-iii.org
-version: "6.1.15-13"
+version: "6.1.15-14"
 slug: "fireflyiii"
 arch: [aarch64, amd64]
 init: false
