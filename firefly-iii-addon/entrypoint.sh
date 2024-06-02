@@ -1,13 +1,10 @@
 #!/usr/bin/with-contenv bashio
 set -e
 
-declare ingress_interface
-declare ingress_port
+#declare ingress_port
 
-ingress_port=$(bashio::addon.ingress_port)
-ingress_interface=$(bashio::addon.ip_address)
-sed -i "s/%%port%%/${ingress_port}/g" /etc/nginx/servers/ingress.conf
-sed -i "s/%%interface%%/${ingress_interface}/g" /etc/nginx/servers/ingress.conf
+#ingress_port=$(bashio::addon.ingress_port)
+#sed -i "s/%%port%%/${ingress_port}/g" /etc/apache2/sites-enabled/firefly-iii.conf
 
 export SITE_OWNER="$(bashio::config 'SITE_OWNER')"
 
@@ -74,4 +71,4 @@ rm -rf bootstrap/cache/*
 rm -rf storage/framework/cache/*
 rm -rf storage/framework/views/*
 
-nginx & apachectl -D FOREGROUND
+apachectl -D FOREGROUND
