@@ -12,7 +12,7 @@ sed -i "s/%%interface%%/${ingress_interface}/g" /etc/nginx/servers/ingress.conf
 # APP_KEY
 export APP_KEY="$(bashio::config 'APP_KEY')"
 
-export APP_ENV=production
+export APP_ENV=local
 export TRUSTED_PROXIES=**
 
 bashio::log.info "Loaded APP_KEY"
