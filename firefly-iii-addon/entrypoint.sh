@@ -54,8 +54,8 @@ find /config/addons_config/fireflyiii -type d -exec chmod 755 {} \;
 
 cd /var/www/html
 
-chgrp -R www-data storage bootstrap/cache vendor
-chmod -R ug+rwx storage bootstrap/cache vendor
+chgrp -R www-data storage bootstrap/cache
+chmod -R ug+rwx storage bootstrap/cache
 
 php artisan migrate --seed
 php artisan firefly-iii:decrypt-all
