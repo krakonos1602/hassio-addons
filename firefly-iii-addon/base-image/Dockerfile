@@ -12,7 +12,7 @@ RUN apt-get update \
     apache2 nginx php8.3 php8.3-{bcmath,intl,curl,zip,gd,xml,mbstring,sqlite3} libapache2-mod-php8.3 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN rm -rf /var/www/html && wget -q https://github.com/firefly-iii/firefly-iii/releases/download/v${FIREFLY_VERSION}/FireflyIII-v${FIREFLY_VERSION}.tar.gz && mkdir /var/www/html && tar -xzf FireflyIII-v${FIREFLY_VERSION}.tar.gz -C /var/www/html && rm FireflyIII-v${FIREFLY_VERSION}.tar.gz && rm -rf /var/www/html/storage/database && rm -rf /var/www/html/storage/upload && chmod a+x /var/www/html/artisan
+RUN rm -rf /var/www/html && wget -q https://github.com/firefly-iii/firefly-iii/releases/download/v${FIREFLY_VERSION}/FireflyIII-v${FIREFLY_VERSION}.tar.gz && mkdir /var/www/html && tar -xzf FireflyIII-v${FIREFLY_VERSION}.tar.gz -C /var/www/html && rm FireflyIII-v${FIREFLY_VERSION}.tar.gz && rm -rf /var/www/html/storage/database && rm -rf /var/www/html/storage/upload && rm -rf /var/www/html/vendor && chmod a+x /var/www/html/artisan
 
 RUN sed -i -r 's@Errorlog .*@Errorlog /dev/stderr@i' /etc/apache2/apache2.conf
 RUN echo "Transferlog /dev/stdout" >> /etc/apache2/apache2.conf
