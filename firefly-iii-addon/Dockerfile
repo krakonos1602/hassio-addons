@@ -7,7 +7,7 @@ RUN apt-get update \
     wget nginx php php-bcmath php-intl php-curl php-zip php-gd php-xml php-mbstring php-sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN rm -rf /var/www/html && wget https://github.com/firefly-iii/firefly-iii/releases/download/v${FIREFLY_VERSION}/FireflyIII-v${FIREFLY_VERSION}.tar.gz && tar -xzf FireflyIII-v${FIREFLY_VERSION}.tar.gz && mv firefly-iii-${FIREFLY_VERSION} /var/www/html && rm -rf /var/www/html/storage/database && rm -rf /var/www/html/storage/upload && chmod a+x /var/www/html/artisan
+RUN rm -rf /var/www/html && wget https://github.com/firefly-iii/firefly-iii/releases/download/v${FIREFLY_VERSION}/FireflyIII-v${FIREFLY_VERSION}.tar.gz && tar -xzf FireflyIII-v${FIREFLY_VERSION}.tar.gz && mv FireflyIII-v${FIREFLY_VERSION} /var/www/html && rm -rf /var/www/html/storage/database && rm -rf /var/www/html/storage/upload && chmod a+x /var/www/html/artisan
 
 COPY rootfs /
 RUN chmod a+x /etc/cont-init.d/nginx.sh \
