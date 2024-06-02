@@ -18,6 +18,7 @@ RUN rm -rf /etc/apache2/sites*
 
 COPY nginx /etc/nginx
 COPY sites-enabled /etc/apache2/sites-enabled
+COPY .env /var/www/html
 
 RUN sed -i -r 's@Errorlog .*@Errorlog /dev/stderr@i' /etc/apache2/apache2.conf
 RUN echo "Transferlog /dev/stdout" >> /etc/apache2/apache2.conf

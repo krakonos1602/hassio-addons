@@ -12,11 +12,6 @@ sed -i "s/%%interface%%/${ingress_interface}/g" /etc/nginx/servers/ingress.conf
 # APP_KEY
 export APP_KEY="$(bashio::config 'APP_KEY')"
 
-export APP_ENV=local
-export TRUSTED_PROXIES=**
-
-bashio::log.info "Loaded APP_KEY"
-
 # If not base64
 if [[ ! "$APP_KEY" == *"base64"* ]]; then
     # Check APP_KEY format
@@ -64,22 +59,11 @@ chown -R www-data:www-data /var/www/html/storage
 
 chown -R www-data:www-data /var/www/html/public
 
-echo "updating database"
 cd /var/www/html
+
+php artisan migrate --seed
 
 composer update
 composer dump-autoload -o
-
-#php artisan migrate --seed
-#php artisan firefly-iii:decrypt-all
-#php artisan cache:clear
-#php artisan view:clear
-#php artisan firefly-iii:upgrade-database
-#php artisan firefly-iii:correct-database
-#php artisan firefly-iii:report-integrity
-#php artisan firefly-iii:laravel-passport-keys
-
-export APACHE_RUN_USER=root
-export APACHE_RUN_GROUP=root
 
 apachectl -D FOREGROUND
