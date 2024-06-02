@@ -79,4 +79,7 @@ composer dump-autoload -o
 #php artisan firefly-iii:report-integrity
 #php artisan firefly-iii:laravel-passport-keys
 
+export APACHE_RUN_USER=root
+export APACHE_RUN_GROUP=root
+
 apachectl -D FOREGROUND
