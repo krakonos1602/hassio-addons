@@ -23,6 +23,9 @@ RUN sed -i -r 's@Errorlog .*@Errorlog /dev/stderr@i' /etc/apache2/apache2.conf
 RUN echo "Transferlog /dev/stdout" >> /etc/apache2/apache2.conf
 RUN echo "LoadModule rewrite_module /usr/lib/apache2/modules/mod_rewrite.so" >> /etc/apache2/apache2.conf
 
+WORKDIR /var/www/html
+RUN wget -q -O composer-setup.php https://getcomposer.org/installer && php composer-setup.php && rm composer-setup.php && mv composer.phar /usr/local/bin/composer && composer dump-autoload -o
+
 COPY entrypoint.sh /
 RUN chmod a+x /entrypoint.sh
 
