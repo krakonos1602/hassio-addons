@@ -54,14 +54,19 @@ find /config/addons_config/fireflyiii -type d -exec chmod 755 {} \;
 
 cd /var/www/html
 
-chgrp -R www-data storage bootstrap/cache
-chmod -R ug+rwx storage bootstrap/cache
+chgrp -R www-data storage bootstrap/cache vendor
+chmod -R ug+rwx storage bootstrap/cache vendor
 
 php artisan migrate --seed
 php artisan firefly-iii:decrypt-all
-php artisan cache:clear
+php artisan route:clear
+php artisan twig:clean
 php artisan view:clear
+php artisan clear-compiled
+php artisan cache:clear
 php artisan firefly-iii:upgrade-database
+php artisan firefly-iii:correct-database
+php artisan firefly-iii:report-integrity
 php artisan firefly-iii:laravel-passport-keys
 php artisan firefly:instructions update
 

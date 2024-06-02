@@ -22,4 +22,9 @@ RUN chown -R www-data:www-data /var/www/html && find /var/www/html -type f -exec
 
 WORKDIR /var/www/html
 RUN wget -q -O composer-setup.php https://getcomposer.org/installer && php composer-setup.php && rm composer-setup.php && mv composer.phar /usr/local/bin/composer
-RUN composer install && composer dump-autoload -o
+
+ENV APP_KEY TestTestTestTestTestTestTestTest
+
+RUN composer install
+
+LABEL org.opencontainers.image.source="https://github.com/krakonos1602/hassio-addons"
