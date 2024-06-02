@@ -1,8 +1,8 @@
 # Home Assistant Add-on: Firefly III
 
-Add-on is unstable and still under development!
+Add-on is still under development!
 
-Uses custom built docker image. Supports Home Assistant's ingress feature. Uses SQLite database. Settings may be added if requested.
+Uses custom built docker image. Uses SQLite database. Settings may be added if requested.
 
 Config options:
 - APP_KEY (required) - Database encryption key
