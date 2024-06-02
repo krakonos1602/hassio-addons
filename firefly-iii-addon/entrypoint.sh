@@ -74,4 +74,4 @@ php artisan firefly-iii:correct-database
 php artisan firefly-iii:report-integrity
 php artisan firefly-iii:laravel-passport-keys
 
-nginx
+apachectl -D FOREGROUND
